@@ -1,0 +1,42 @@
+{
+  "canisters": {
+    "role_permission_core": {
+      "main": "src/role_permission_core/main.mo",
+      "type": "motoko"
+    },
+    "assistant": {
+      "main": "src/assistant/main.mo",
+      "type": "motoko"
+    },
+    "internet_identity": {
+      "__0": "The development build of Internet Identity. For more information, see https://github.com/dfinity/internet-identity#build-features-and-flavors",
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm",
+
+      "__1": "Currently, dfx tries to shrink already optimized wasm modules. This is why we disable it here.",
+      "shrink": false
+    },
+    "role_permission_frontend": {
+      "dependencies": [
+        "role_permission_core",
+        "assistant"
+      ],
+      "frontend": {
+        "entrypoint": "src/role_permission_frontend/src/index.html"
+      },
+      "source": [
+        "src/role_permission_frontend/assets",
+        "dist/role_permission_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "version": 1
+}
